@@ -1,4 +1,4 @@
-# Круглослов — Backend
+# 101slovo — Backend
 
 FastAPI-приложение для интервального повторения английских слов.
 
@@ -123,7 +123,7 @@ pytest tests/test_models.py tests/test_events_service.py -v
 
 ### Интеграционные тесты (требуют PostgreSQL)
 ```bash
-export TEST_DATABASE_URL="postgresql+asyncpg://user:pass@localhost:5432/krugloslov_test"
+export TEST_DATABASE_URL="postgresql+asyncpg://user:pass@localhost:5432/101slovo_test"
 pytest tests/test_constraints.py -v
 ```
 

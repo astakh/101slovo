@@ -10,7 +10,7 @@ from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.requests import Request
 from starlette.responses import Response
 
-logger = logging.getLogger("krugloslov.access")
+logger = logging.getLogger("101slovo.access")
 
 
 class RequestLoggingMiddleware(BaseHTTPMiddleware):
