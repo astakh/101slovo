@@ -58,13 +58,10 @@ class TestWordClustering:
         assert set(all_words) == {1, 2, 3, 4, 5, 6, 7}
     
     def test_cluster_10_words(self):
-        """10 words → [3, 3, 4]."""
+        """10 words → k = ceil(10/3) = 4 groups, sizes [2, 2, 3, 3]."""
         result = cluster_words(list(range(1, 11)), "seed")
-        assert len(result) == 3
-        # ceil(10/3) = 4 groups, but 10/4 = 2.5, so [2, 2, 3, 3] or similar
-        # Actually: k = ceil(10/3) = 4, base = 10//4 = 2, remainder = 10%4 = 2
-        # So: (4-2)=2 groups of 2, then 2 groups of 3
-        # [2, 2, 3, 3]
+        # k = ceil(10/3) = 4, base = 10//4 = 2, remainder = 10%4 = 2
+        # So: (4-2)=2 groups of 2, then 2 groups of 3 → [2, 2, 3, 3]
         assert len(result) == 4
         sizes = sorted([len(g) for g in result])
         assert sizes == [2, 2, 3, 3]

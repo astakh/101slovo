@@ -86,11 +86,23 @@ class TestPromptService:
     
     def test_fallback_prompts_have_required_placeholders(self):
         """Should verify fallback prompts have correct placeholders."""
-        # generate_sentences should have {level}, {count}, {word}
+        # generate_sentences uses str.format() with kwargs level/count/word
+        # (see lesson_start_service.format_prompt call), so it must NOT contain
+        # any placeholder that is not provided at format time.
         generate_prompt = FALLBACK_PROMPTS["generate_sentences"]
         assert "{level}" in generate_prompt
-        assert "{count}" in generate_prompt
-        assert "{word}" in generate_prompt
+
+        # Verify the template renders successfully with the exact kwargs used
+        # by LessonStartService: level, count, word.
+        import re
+        from app.services.prompt_service import PromptService
+
+        service = PromptService.__new__(PromptService)  # no DB session needed
+        rendered = service.format_prompt(
+            generate_prompt, level="B1", count=5, word="multiple words"
+        )
+        # No unrendered placeholders left
+        assert not re.search(r"\{[a-z_]+\}", rendered)
         
         # evaluate_translation should have no placeholders in system template
         evaluate_prompt = FALLBACK_PROMPTS["evaluate_translation"]
