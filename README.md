@@ -1,6 +1,8 @@
-# Круглослов
+# 101slovo
 
 Веб-приложение для изучения английских слов через интервальное повторение в контексте предложений, сгенерированных с помощью LLM.
+
+Проект: **101slovo** — домен: [101slovo.ru](https://101slovo.ru)
 
 ## 🎯 Возможности
 
@@ -147,7 +149,7 @@ npm run dev
 
 ```env
 # Database
-DATABASE_URL=postgresql+asyncpg://user:password@localhost:5432/krugloslov
+DATABASE_URL=postgresql+asyncpg://user:password@localhost:5432/101slovo
 
 # JWT
 JWT_SECRET=your-secret-key-here
@@ -236,7 +238,7 @@ pytest backend/tests/test_auth.py -v
 ## 📦 Структура проекта
 
 ```
-krugloslov/
+101slovo/
 ├── backend/
 │   ├── app/
 │   │   ├── main.py              # FastAPI приложение
@@ -317,4 +319,4 @@ krugloslov/
 
 ---
 
-**Круглослов** - учите слова в контексте, запоминайте навсегда! 🎓
+**101slovo** - учите слова в контексте, запоминайте навсегда! 🎓

@@ -32,24 +32,24 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
 )
-logger = logging.getLogger("krugloslov")
+logger = logging.getLogger("101slovo")
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Application lifespan: startup and shutdown."""
-    logger.info("Starting Круглослов API")
+    logger.info("Starting 101slovo API")
     logger.info("WORDS_PER_LESSON=%d", settings.WORDS_PER_LESSON)
     logger.info("DAILY_LESSON_LIMIT_DEFAULT=%d", settings.DAILY_LESSON_LIMIT_DEFAULT)
     logger.info("DAILY_LESSON_LIMIT_MAX=%d", settings.DAILY_LESSON_LIMIT_MAX)
     yield
-    logger.info("Shutting down Круглослов API")
+    logger.info("Shutting down 101slovo API")
 
 
 def create_app() -> FastAPI:
     """Create and configure the FastAPI application."""
     app = FastAPI(
-        title="Круглослов API",
+        title="101slovo API",
         version="0.1.0",
         lifespan=lifespan,
     )
